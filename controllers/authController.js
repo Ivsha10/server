@@ -27,7 +27,7 @@ const handleSignIn = async (req, res) => {
             const result = foundUser.save();
 
             res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 1000 * 60 * 60 * 24 });
-            res.json({'accessToken': accessToken, 'message':'Signed In Succesfully', 'photo':foundUser?.image});
+            res.json({'accessToken': accessToken, 'message':'Signed In Succesfully', 'roles':foundUser?.roles});
             console.log(req.body)
             console.log('Signed In');
         } else {

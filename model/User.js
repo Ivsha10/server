@@ -7,6 +7,7 @@ const userSchema = new Schema({
     password: {type: String, require: true},
     fullName: String,
     email: String,
+    roles: ['admin', 'user,','editor'], 
     image: {type: String, require: true},
     invoices: [
         {

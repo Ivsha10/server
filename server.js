@@ -36,6 +36,8 @@ app.use('/refresh', require('./routes/refresh'));
 
 app.use(verifyJWT);
 app.use('/users',  require('./routes/user'));
+app.use('/articles', require('./routes/article'));
+app.use('/products', require('./routes/product'));
 
 
 mongoose.connection.once('open', ()=> {
