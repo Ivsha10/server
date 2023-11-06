@@ -11,6 +11,7 @@ const handleNewUser = async (req, res) => {
         'fullName': null,
         'email': null,
         'image': null,
+        'roles': ['user']
     });
     console.log(`User ${username} registered successfully!`);
     console.log(result);
