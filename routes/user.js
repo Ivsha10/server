@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../model/User');
-
+const bcrypt = require('bcrypt');
 const multer = require('multer');
 
 const upload = multer({ dest: 'images/userImages' });
@@ -88,10 +88,12 @@ router.put('/:user', async (req, res) => {
     
     const username  = req.params.user;
     const invoice = req.body;
+    const hashedCreditCard = await bcrypt.hash(invoice.creditCard, 10);
+    invoice.creditCard = hashedCreditCard;
     const foundUser = await User.findOne({username: username}).exec();
     foundUser.invoices.push(invoice);
     const result= await foundUser.save();
-
+    
     res.sendStatus(200);
     
 });
