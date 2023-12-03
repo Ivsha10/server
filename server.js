@@ -1,4 +1,4 @@
-const express  = require('express');
+const express = require('express');
 const app = express();
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
@@ -8,7 +8,10 @@ const connectDB = require('./config/dbConn');
 const mongoose = require('mongoose');
 const credentials = require('./middleware/credentials');
 const verifyJWT = require('./middleware/verifyJWT');
-const PORT  =  3500;
+const PORT = 3500;
+const yellow = "\x1b[33m";
+const green  = "\x1b[32m";
+const red  = "\x1b[31m";
 
 connectDB();
 // To connect to the database
@@ -42,7 +45,11 @@ app.use('/products', require('./routes/product'));
 
 mongoose.connection.once('open', ()=> {
     console.log('Connected to MongoDB');
-})
+}) 
 
-app.listen(PORT, ()=> console.log(`SERVER RUNNING ON PORT ${PORT}!`));
+
+
+
+
+app.listen(PORT, () => console.log(green, `CONNECTION ESTABLISHED!`));
 // Starting the server! 

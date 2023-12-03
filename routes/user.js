@@ -83,4 +83,17 @@ router.put('/', async (req, res) => {
 
     res.json(filteredUsers);
 });
+
+router.put('/:user', async (req, res) => {
+    
+    const username  = req.params.user;
+    const invoice = req.body;
+    const foundUser = await User.findOne({username: username}).exec();
+    foundUser.invoices.push(invoice);
+    const result= await foundUser.save();
+
+    res.sendStatus(200);
+    
+});
+
 module.exports = router;

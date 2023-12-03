@@ -13,7 +13,14 @@ router.get('/', async (req, res) => {
     res.json(articles);
 
 })
+router.get('/:id', async (req, res) => {
 
+
+    const id = (req.params.id);
+
+    const foundArticle = await Article.findById(id).exec();
+    res.json(foundArticle);
+})
 router.post('/', upload.single('image'), async (req, res) => {
     const { title, author, body, date } = req.body;
     const image = req?.file?.filename;
@@ -30,7 +37,7 @@ router.post('/', upload.single('image'), async (req, res) => {
         res.json('Article Successfully Created');
 
     } else {
-        res.json({'error' : 'Article Already Exists'})
+        res.json({ 'error': 'Article Already Exists' })
     }
 })
 

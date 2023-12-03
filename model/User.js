@@ -9,15 +9,7 @@ const userSchema = new Schema({
     email: String,
     roles: ['admin', 'user,','editor'], 
     image: {type: String, require: true},
-    invoices: [
-        {
-            invoiceNumber: {type: String, require:true},
-            articleTitle: {type: String, require: true},
-            articleId: {type: Number, require:true},
-            invoiceDate: {type: Date, require:true},
-            cardNumber: {type: String, require:true} 
-        }
-    ],
+    invoices: [],
     refreshToken: String
 })
 
